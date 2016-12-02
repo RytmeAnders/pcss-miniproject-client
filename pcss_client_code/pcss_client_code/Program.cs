@@ -87,6 +87,15 @@ namespace pcss_client_code
                         Console.WriteLine("Take a guess (0-9):");
                         writer.WriteLine(Console.ReadLine());
                     }
+
+                    if (response.Equals("Now guess!"))
+                    {
+                        // Guess
+                        Console.WriteLine("Type 1000 to change your secret number");
+                        Console.WriteLine("Take a guess (0-9):");
+                        writer.WriteLine(Console.ReadLine());
+                        Console.WriteLine();
+                    }
                 }
             }
 
