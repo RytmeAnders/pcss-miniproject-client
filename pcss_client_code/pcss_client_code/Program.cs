@@ -61,6 +61,7 @@ namespace pcss_client_code
                 {
                     string message = reader.ReadLine();
                     Console.WriteLine(message);
+                    Console.WriteLine(playerNumber);
                     LobbyResponse = "";
                 }
                 //Sends message from the server whenever the lobby is full 
