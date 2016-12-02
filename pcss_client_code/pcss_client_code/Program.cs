@@ -40,6 +40,55 @@ namespace pcss_client_code
 
             // Let the server know our number
             writer.WriteLine(mySecretNumber);
+            lobby = true;
+            Console.Clear();
+
+            while (lobby)
+            {
+                string LobbyResponse = reader.ReadLine();
+
+                if (LobbyResponse.Equals("Lobby"))
+                {
+                    Console.WriteLine("LOBBY ENTERED");
+                    playerNumber = Int32.Parse(reader.ReadLine());
+                    Console.WriteLine("player " + playerNumber + ":");
+                    LobbyResponse = "";
+                }
+                if (LobbyResponse.Equals("update"))
+                {
+                    string message = reader.ReadLine();
+                    Console.WriteLine(message);
+                    LobbyResponse = "";
+                }
+
+                if (LobbyResponse.Equals("Game Started"))
+                {
+                    lobby = false;
+                    LobbyResponse = "";
+                }
+            }
+
+
+            if (!lobby)
+            {
+                Console.Clear();
+                while (true)
+                {
+                    // Wait for other players to join / wait to be killed
+                    string response = reader.ReadLine();
+                    Console.WriteLine(response);
+
+                    if (response.Equals("Game Over"))
+                        break;
+
+                    if (response.Equals("It's your turn!"))
+                    {
+                        // Guess
+                        Console.WriteLine("Take a guess (0-9):");
+                        writer.WriteLine(Console.ReadLine());
+                    }
+                }
+            }
 
         }
     }
