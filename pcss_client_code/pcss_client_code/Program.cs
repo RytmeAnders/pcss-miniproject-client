@@ -96,6 +96,14 @@ namespace pcss_client_code
                         writer.WriteLine(Console.ReadLine());
                         Console.WriteLine();
                     }
+
+                    if (response.Equals("change"))
+                    {
+                        Console.WriteLine("Enter your new secret number:");
+                        mySecretNumber = Int32.Parse(Console.ReadLine());
+                        writer.WriteLine(mySecretNumber);
+                        Console.WriteLine();
+                    }
                 }
             }
 
