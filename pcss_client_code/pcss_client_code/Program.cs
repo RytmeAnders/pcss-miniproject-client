@@ -18,15 +18,15 @@ namespace pcss_client_code
             int playerNumber = 0;
             int mySecretNumber = 0;
             bool lobby = false;
-            int port = 1234;
-            string IP = "127.0.0.1";
+            int port = 0;
+            string IP = "";
 
             Console.WriteLine("Please Enter the IP of the server");
             IP = Console.ReadLine();
             Console.WriteLine("Please enter the port of the server");
             port = Int32.Parse(Console.ReadLine());
 
-            TcpClient client = new TcpClient("localhost", port);
+            TcpClient client = new TcpClient(IP, port);
             NetworkStream stream = client.GetStream();
             StreamReader reader = new StreamReader(stream);
             StreamWriter writer = new StreamWriter(stream) { AutoFlush = true };
@@ -83,13 +83,13 @@ namespace pcss_client_code
 
                     if (response.Equals("It's your turn!"))
                     {
-                        // Guess
-                        Console.WriteLine("Take a guess (0-9):");
+                        // Target
+                        Console.WriteLine("Choose a target (next / previous):");
                         writer.WriteLine(Console.ReadLine());
+                        Console.WriteLine();
                     }
                 }
             }
-
         }
     }
 }
